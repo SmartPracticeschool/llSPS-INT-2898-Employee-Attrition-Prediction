@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+<h1>Employee Attrition</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}" method="POST">
+   Age: <input type="text" name="Age" placeholder="Age" required="required" /><br>
+   
+    Business Travel:<select name="BusinessTravel" required="required">
+ <option value="">Select TravelFrequency </option>
+ <option value=0>Travel_Rarely</option>
+ <option value=1>Travel_Frequently</option>
+ <option value=2>Non-Travel</option>
+</select><br>
+   
+    DailyRate:<input type="text" name="DailyRate" placeholder="DailyRate" required="required" /><br>
+   
+       
+Department:<select name="Department" required="required">
+ <option value="">Select Department </option>
+ <option value=0>Sales</option>
+ <option value=1>Research & Development</option>
+ <option value=2>Human Resources</option>
+</select>
+<br>
+
+
+        DistanceFromHome:<input type="text" name="DistanceFromHome" placeholder="DistanceFromHome" required="required" /><br>
+Education:<input type="text" name="Education" placeholder="Education" required="required" /><br>
+
+EducationField:<select name="EducationField" required="required">
+ <option value="">Select Education Field </option>
+ <option value=0>Life Sciences</option>
+ <option value=1>Medical</option>
+ <option value=2>Marketing</option>
+ <option value=3>Technical Degree</option>
+ <option value=4>Human Resources</option>
+ <option value=5>Other</option>
+</select><br>
+EnvironmentSatisfaction:<input type="text" name="EnvironmentSatisfaction" placeholder="In range of 1 to 4" required="required" /><br>
+ 
+ Gender:<select name="Gender" required="required">
+ <option value="">Select Gender</option>
+ <option value=0>Female</option>
+ <option value=1>male</option>
+ </select><br>
+ HourlyRate:<input type="text" name="HourlyRate" placeholder="HourlyRate" required="required"/><br>
+ 
+ JobInvolvement:<input type="text" name="JobInvolvement" placeholder="In range of 1 to 4" required="required" /><br>
+
+Joblevel:<input type="text" name="Joblevel" placeholder="In range of 1 to 5" required="required" /><br>
+
+
+JobRole:<select name="JobRole" required="required">
+ <option value="">Select Job Role </option>
+ <option value=0>Sales Executive</option>
+ <option value=1>Research Scientist</option>
+ <option value=2>Labaratory Technician</option>
+ <option value=3>Manufacturing Director</option>
+ <option value=4>Healthcare Representative</option>
+ <option value=5>Manager</option>
+ <option value=6>Sales Representative</option>
+ <option value=7>Research Director</option>
+ <option value=8>Human Resources</option>
+</select><br>
+
+  JobSatisfaction:<input type="text" name="JobSatisfaction" placeholder="In range of 1 to 4" required="required" /><br>
+
+MaritalStatus:<select name="MaritalStatus" required="required">
+ <option value="">Select MaritalStatus </option>
+ <option value=0>Single</option>
+ <option value=1>Married</option>
+ <option value=2>Divorced</option>
+</select><br>
+ 
+ MonthlyIncome:<input type="text" name="MonthlyIncome" placeholder="MonthlyIncome" required="required" /><br>
+MonthlyRate:<input type="text" name="MonthlyRate" placeholder="MonthlyRate" required="required" /><br>
+NumCompaniesWorked:<input type="text" name="NumCompaniesWorked" placeholder="NumCompaniesWorked" required="required" /><br>
+
+OverTime:<select name="OverTime" required="required">
+ <option value="">Select OverTime</option>
+ <option value=0>Yes</option>
+ <option value=1>No</option>
+ </select><br>
+ 
+PercentSalaryHike:<input type="text" name="PercentSalaryHike" placeholder="PercentSalaryHike" required="required" /><br>
+PerformanceRating:<input type="text" name="PerformanceRating" placeholder="PerformanceRating" required="required" /><br>
+ 
+   RelationshipSatisfaction:<input type="text" name="RelationshipSatisfaction" placeholder="In range of 1 to 4" required="required" /><br>
+StockOptionLevel:<input type="text" name="StockOptionLevel" placeholder="In range of 0 to 3" required="required" /><br>
+    TotalWorkingYears:<input type="text" name="TotalWorkingYears" placeholder="TotalWorkingYears" required="required" /><br>
+    TrainingTimesLastYear:<input type="text" name="TrainingTimesLastYear" placeholder="TrainingTimesLastYear" required="required" /><br>
+WorkLifeBalance:<input type="text" name="WorkLifeBalance" placeholder="In range of 1 to 4" required="required" /><br>
+YearsAtCompany:<input type="text" name="YearsAtCompany" placeholder="YearsAtCompany" required="required" /><br>
+    YearsInCurrentRole:<input type="text" name="YearsInCurrentRole" placeholder="YearsInCurrentRole" required="required" /><br>
+    YearsSinceLastPromotion:<input type="text" name="YearsSinceLastPromotion" placeholder="YearsSinceLastPromotion" required="required" /><br>
+    YearsWithCurrentManager:<input type="text" name="YearsWithCurrManager" placeholder="YearsWithCurrManager" required="required" /><br>
+   
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+   
+    </form>
+
+
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
